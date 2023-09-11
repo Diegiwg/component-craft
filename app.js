@@ -88,22 +88,33 @@ function createCustomComponent(name, raw_html) {
 }
 
 async function fetchComponentsList() {
-    const response = await fetch("components/");
-    const raw_html = await response.text();
+    try {
+        const response = await fetch("components/");
+        const raw_html = await response.text();
 
-    const html = document.createRange().createContextualFragment(raw_html);
+        const html = document.createRange().createContextualFragment(raw_html);
 
-    const dom = document.implementation.createHTMLDocument();
-    dom.body.replaceChildren(html);
+        const dom = document.implementation.createHTMLDocument();
+        dom.body.replaceChildren(html);
 
-    const files_ref = Array.from(
-        dom.body.querySelectorAll("span[class='name']")
-    );
+        const files_ref = Array.from(
+            dom.body.querySelectorAll("span[class='name']")
+        );
 
-    // Remove the first element
-    files_ref.shift();
+        // Remove the first element
+        files_ref.shift();
 
-    return files_ref.map((file) => file.innerText);
+        return files_ref.map((file) => file.innerText);
+    } catch {
+        // Fix for Github Pages
+        return [
+            "alert.html",
+            "button.html",
+            "card.html",
+            "element.html",
+            "logger.html",
+        ];
+    }
 }
 
 async function fetchComponentRaw(component) {
