@@ -90,6 +90,10 @@ function createCustomComponent(name, raw_html) {
 async function fetchComponentsList() {
     try {
         const response = await fetch("components/");
+        if (!response.ok) {
+            throw new Error(response.statusText);
+        }
+
         const raw_html = await response.text();
 
         const html = document.createRange().createContextualFragment(raw_html);
