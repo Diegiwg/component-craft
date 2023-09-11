@@ -1,0 +1,17 @@
+<template>
+    <h1>"[title]"</h1>
+
+    <p id="element-by-js"></p>
+    <slot></slot>
+</template>
+
+<script>
+    const p_node = root.querySelector("#element-by-js");
+    p_node.innerText = '"[content]"';
+</script>
+
+<style>
+    .root {
+        color: "[color]";
+    }
+</style>

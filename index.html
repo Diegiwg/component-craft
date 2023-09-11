@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+        <title>Component Craft - Demo</title>
+
+        <script src="app.js" type="module" defer></script>
+    </head>
+    <body>
+        <div id="app">
+            <h1>Component Craft - Demo</h1>
+            <hr />
+            <cc-logger enable-original="true" color="#6c6c6c"></cc-logger>
+            <hr />
+            <cc-element title="Meu Título" color="red" content="Meu Conteúdo">
+                <p>Isso vai dentro da tag 'Slot'</p>
+            </cc-element>
+            <hr />
+            <cc-button
+                text="Clique-me"
+                color="blue"
+                click-handler="() => {
+                console.log('Clicou no botão!');
+            }"
+            ></cc-button>
+            <hr />
+            <cc-card
+                title="Título do Card"
+                content="Conteúdo do Card"
+            ></cc-card>
+            <hr />
+            <cc-alert>Este é um alerta vermelho</cc-alert>
+            <hr />
+        </div>
+    </body>
+</html>

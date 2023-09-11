@@ -1,0 +1,27 @@
+<template>
+    <h1>Logger</h1>
+
+    <ul id="logs"></ul>
+</template>
+
+<script>
+    const original_func = console.log;
+
+    const logs = root.querySelector("#logs");
+
+    console.log = (arg) => {
+        logs.innerHTML += `<li>${arg}</li>`;
+
+        if ("[enable-original]" === true) original_func(arg);
+    };
+
+    console.log(`The Logger is now active!`);
+</script>
+
+<style>
+    .root {
+        height: 20vh;
+        overflow-y: scroll;
+        color: "[color]";
+    }
+</style>
